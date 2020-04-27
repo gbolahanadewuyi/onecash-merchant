@@ -1,0 +1,25 @@
+service: onecash-merchant
+runtime: php55
+
+env_variables:
+  # Put production environment variables here.
+  MYSQL_DSN: mysql:unix_socket=/cloudsql/onecash:europe-west1:onecash;dbname=payin2019
+  MYSQL_USER: tunde
+  MYSQL_PASSWORD: "tundedev"
+  MYSQL_DB: payin2019
+
+
+
+handlers:
+- url: /
+  script: index.php
+  secure: always
+
+- url: /public
+  static_dir: public
+  secure: always
+
+- url: /(.*)
+  script: index.php
+  secure: always
+  

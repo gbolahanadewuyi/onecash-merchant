@@ -1,0 +1,11 @@
+steps:
+
+- id: build
+  name: 'gcr.io/cloud-builders/gcloud'
+  entrypoint: 'bash'
+  args:
+  - '-c'
+  - |
+    gcloud source repos clone onecash-merchant --project=onecash
+    gcloud app deploy app.yaml
+    
